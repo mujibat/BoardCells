@@ -1,0 +1,13 @@
+
+    body {
+        /* background-size: cover;
+        height: 100vh; */
+    }
+    .box {
+        width: 150px;
+        height: 150px;
+        border: 1px solid black;
+        display: inline-block;
+        margin: -2px;
+        background-color: white;
+    }
