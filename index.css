@@ -1,13 +1,83 @@
 
     body {
-        /* background-size: cover;
-        height: 100vh; */
-    }
-    .box {
-        width: 150px;
-        height: 150px;
-        border: 1px solid black;
+        font-family: 'Arial', sans-serif;
+        background-color: #0a0101;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+     }
+
+     h1 {
+        color: #ff80a0;
+        font-size: 24px;
+     }
+
+     form {
+        /* background-color: blue; */
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px auto;
+        /* margin-right: 20px; */
+        max-width: 400px;
+     }
+
+     label {
+        display: block;
+        color: #ff80a0;
+        margin-bottom: 5px;
+        font-size: 16px;
+     }
+
+     input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        margin-right: 20px;
+     }
+
+     input[type="submit"] {
+        background-color: #ff80a0;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+     }
+
+     input[type="submit"]:hover {
+        background-color: #ff577f;
+     }
+
+     #result {
+        font-size: 16px;
+        color: #333;
+        margin-top: 20px;
+     }
+
+     #queryButton {
+        background-color: #ff80a0;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+        margin-right: 10px;
+     }
+
+     #queryButton:hover {
+        background-color: #ff577f;
+     }
+
+     .box {
+        width: 50px;
+        height: 50px;
+        background-color: #c4a7a7;
+        border: 1px solid #ddd;
+        margin: 5px;
         display: inline-block;
-        margin: -2px;
-        background-color: white;
-    }
+     }

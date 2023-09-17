@@ -20,18 +20,18 @@ contract Cell{
         return random % 3;
     }
 
-    mapping(int => string) public _cells;
+    mapping(uint => string) public _cells;
 
-    function getColorforCells(uint x1, uint x2, uint y1, uint y2) public pure returns(uint){
+    function getColorforCells(uint x1, uint x2, uint y1, uint y2) public view returns(string memory, uint){
         uint x = x2 - x1;
         uint y =  y2 - y1;
         uint m = y / x;
         // console.log(m, "kkjkjkkjk");
-        //  return _cells[m];
-        return m;
+         return (_cells[m], m);
+        //return m;
     }
     constructor() {
-      for(int i = 0; i < 35; i++){
+      for(uint i = 0; i < 35; i++){
             _cells[i] = ids[getRandomValue()];
         }
     }

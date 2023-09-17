@@ -32,7 +32,6 @@
 
    <br>
    <button id="queryButton" onclick="connect()">Connect Metamask</button>
-   <button id="queryButton">Query Cell Color</button>
    <div id="result"></div>
    <div>
       <div>
@@ -81,25 +80,25 @@
          <div id="35" class="box"> </div>
       </div>
    </div>
-   <!-- <button id="process-btn" onclick="increment()">PROCESS</button> -->
+   <!-- <button id="process-btn" onclick="increme"nt">PROCESS</button> -->
    <script>
-      // MetaMask setup
-      // async function connect() {
-      //    if (window.ethereum != undefined) {
-      //       try {
-      //          const accounts = await ethereum.request({ method: "eth_requestAccounts" });
-      //          console.log(accounts, 'accounts');
-      //          alert('Connected to MetaMask!');
-      //       } catch (error) {
-      //          console.error('MetaMask connection error:', error);
-      //       }
-      //    } else {
-      //       alert('MetaMask not detected. Please install MetaMask.');
-      //    }
-      // }
+     // MetaMask setup
+      async function connect() {
+         if (window.ethereum != undefined) {
+            try {
+               const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+               console.log(accounts, 'accounts');
+               alert('Connected to MetaMask!');
+            } catch (error) {
+               console.error('MetaMask connection error:', error);
+            }
+         } else {
+            alert('MetaMask not detected. Please install MetaMask.');
+         }
+      }
 
-      const contractAddress = "0x5aC770E57e97961F4431Dac8888BC9b4c2E57772";
-      const contractABI = [
+      const contractAddress = "0x3F250a1d43c4420f92aa1cf6Fc68B3E797Eec6a1";
+      const contractABI =[
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
@@ -108,9 +107,9 @@
 	{
 		"inputs": [
 			{
-				"internalType": "int256",
+				"internalType": "uint256",
 				"name": "",
-				"type": "int256"
+				"type": "uint256"
 			}
 		],
 		"name": "_cells",
@@ -150,12 +149,17 @@
 		"name": "getColorforCells",
 		"outputs": [
 			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			}
 		],
-		"stateMutability": "pure",
+		"stateMutability": "view",
 		"type": "function"
 	}
 ]
@@ -200,10 +204,13 @@
          // console.log(typeof x1Input, 'iuiuiuiu')
 
          window.contract = await new window.web3.eth.Contract(contractABI, contractAddress);
-         //   console.log(await window.contract.methods, 'hghghg')
+           console.log(await window.contract.methods, 'works')
 
-         const color = await window.contract.methods.getColorforCells(1, 2, 1, 5).call();
-         console.log(color, 'color');
+         const color = await window.contract.methods.getColorforCells(x1Input, x2Input, y1Input, y2Input).call();
+         console.log(color[1], 'color');
+         console.log(color[0], 'color');
+
+         document.getElementById(color[1]).style.backgroundColor = color[0]
          } catch (error) {
             console.log(error, 'this is a callback error')
          }
