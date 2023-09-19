@@ -52,7 +52,7 @@ Before you begin, ensure you have the following dependencies installed:
 
 ## Smart Contract
 
-This application interacts with an Ethereum smart contract deployed at the address `0xf04Eacc35543d74d9F51b682581fD4474926D3FE`. The contract ABI is provided in the code.
+This application interacts with an Ethereum smart contract deployed at the address `0x2158F6d159148F7FD585E58F0cA77c47E55a2C22`. The contract ABI is provided in the code.
 
 ## Troubleshooting
 
