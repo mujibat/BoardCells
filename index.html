@@ -12,6 +12,8 @@
 
 <body>
    <h1>Cell Color Query</h1>
+   <!-- action="https://www.dolapo.com" -->
+   <button id="queryButton" onclick="connect()">Connect Wallet</button>
     <form id="numberForm">
       <label for="x1Input">Enter X1:</label>
       <input type="number" id="x1Input" name="x1Input" min="0" max="34" required>
@@ -31,53 +33,53 @@
    <p id="result"></p>
 
    <br>
-   <button id="queryButton" onclick="connect()">Connect Metamask</button>
+   
    <div id="result"></div>
    <div>
       <div>
+         <div id="0" class="box"> </div>
          <div id="1" class="box"> </div>
          <div id="2" class="box"> </div>
          <div id="3" class="box"> </div>
          <div id="4" class="box"> </div>
          <div id="5" class="box"> </div>
          <div id="6" class="box"> </div>
-         <div id="7" class="box"> </div>
       </div>
       <div>
+         <div id="7" class="box"> </div>
          <div id="8" class="box"> </div>
          <div id="9" class="box"> </div>
          <div id="10" class="box"> </div>
          <div id="11" class="box"> </div>
          <div id="12" class="box"> </div>
          <div id="13" class="box"> </div>
-         <div id="14" class="box"> </div>
       </div>
       <div>
+         <div id="14" class="box"> </div>
          <div id="15" class="box"> </div>
          <div id="16" class="box"> </div>
          <div id="17" class="box"> </div>
          <div id="18" class="box"> </div>
          <div id="19" class="box"> </div>
          <div id="20" class="box"> </div>
-         <div id="21" class="box"> </div>
       </div>
       <div>
+         <div id="21" class="box"> </div>
          <div id="22" class="box"> </div>
          <div id="23" class="box"> </div>
          <div id="24" class="box"> </div>
          <div id="25" class="box"> </div>
          <div id="26" class="box"> </div>
          <div id="27" class="box"> </div>
-         <div id="28" class="box"> </div>
       </div>
       <div>
+         <div id="28" class="box"> </div>
          <div id="29" class="box"> </div>
          <div id="30" class="box"> </div>
          <div id="31" class="box"> </div>
          <div id="32" class="box"> </div>
          <div id="33" class="box"> </div>
          <div id="34" class="box"> </div>
-         <div id="35" class="box"> </div>
       </div>
    </div>
    <!-- <button id="process-btn" onclick="increme"nt">PROCESS</button> -->
@@ -97,7 +99,7 @@
          }
       }
 
-      const contractAddress = "0x3F250a1d43c4420f92aa1cf6Fc68B3E797Eec6a1";
+      const contractAddress = "0xf04Eacc35543d74d9F51b682581fD4474926D3FE";
       const contractABI =[
 	{
 		"inputs": [],
@@ -107,9 +109,9 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "int256",
 				"name": "",
-				"type": "uint256"
+				"type": "int256"
 			}
 		],
 		"name": "_cells",
@@ -126,24 +128,24 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "int256",
 				"name": "x1",
-				"type": "uint256"
+				"type": "int256"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "int256",
 				"name": "x2",
-				"type": "uint256"
+				"type": "int256"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "int256",
 				"name": "y1",
-				"type": "uint256"
+				"type": "int256"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "int256",
 				"name": "y2",
-				"type": "uint256"
+				"type": "int256"
 			}
 		],
 		"name": "getColorforCells",
@@ -154,12 +156,36 @@
 				"type": "string"
 			},
 			{
-				"internalType": "uint256",
+				"internalType": "int256",
 				"name": "",
-				"type": "uint256"
+				"type": "int256"
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "int256",
+				"name": "x1",
+				"type": "int256"
+			},
+			{
+				"internalType": "int256",
+				"name": "x2",
+				"type": "int256"
+			}
+		],
+		"name": "tryifitWorks",
+		"outputs": [
+			{
+				"internalType": "int256",
+				"name": "",
+				"type": "int256"
+			}
+		],
+		"stateMutability": "pure",
 		"type": "function"
 	}
 ]
@@ -207,10 +233,10 @@
            console.log(await window.contract.methods, 'works')
 
          const color = await window.contract.methods.getColorforCells(x1Input, x2Input, y1Input, y2Input).call();
-         console.log(color[1], 'color');
-         console.log(color[0], 'color');
+         console.log(Math.abs(color[1]), 'position'); // e.g 0 |34
+         console.log(color[0], 'color'); // e.g white
 
-         document.getElementById(color[1]).style.backgroundColor = color[0]
+         document.getElementById(Math.abs(color[1])).style.backgroundColor = color[0]
          } catch (error) {
             console.log(error, 'this is a callback error')
          }
